@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verificando...</title>
+</head>
+<body>
+  <h1>Verificando tu correo...</h1>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+
+    fetch("https://funlmhjsjrsecfhtkvz.supabase.co/functions/v1/verify-email-token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token }),
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        document.body.innerHTML = "<h1>✅ Email verificado correctamente</h1>";
+      } else {
+        document.body.innerHTML = "<h1>❌ Error verificando email</h1>";
+      }
+    })
+    .catch(() => {
+      document.body.innerHTML = "<h1>❌ Error</h1>";
+    });
+  </script>
+</body>
+</html>
