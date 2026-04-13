@@ -5,19 +5,17 @@
   <title>Verificando...</title>
 </head>
 <body>
-  <h2 id="status">Verificando tu correo...</h2>
+  <h2>Redirigiendo para verificar tu email...</h2>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
 
-    const status = document.getElementById("status");
-
     if (!token) {
-      status.innerText = "❌ Token inválido";
+      document.body.innerHTML = "❌ Token inválido";
     } else {
       window.location.href =
-        "https://funlmhjsjrsecfhktvz.supabase.co/functions/v1/verify-email-token?token=" + token;
+        "https://lfunlmhjsjrsecfhktvz.supabase.co/functions/v1/verify-email-token?token=" + token;
     }
   </script>
 </body>
