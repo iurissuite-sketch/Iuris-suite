@@ -16,24 +16,8 @@
     if (!token) {
       status.innerText = "❌ Token inválido";
     } else {
-      fetch("https://furlnmhjsjrsecfhktvz.supabase.co/functions/v1/verify-email-token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ token })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          status.innerText = "✅ Email verificado correctamente";
-        } else {
-          status.innerText = "❌ Error verificando email";
-        }
-      })
-      .catch(() => {
-        status.innerText = "❌ Error de conexión";
-      });
+      window.location.href =
+        "https://funlmhjsjrsecfhktvz.supabase.co/functions/v1/verify-email-token?token=" + token;
     }
   </script>
 </body>
